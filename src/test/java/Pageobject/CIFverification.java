@@ -32,11 +32,11 @@ public class CIFverification extends Basepage {
 			driver=new ChromeDriver();
 			driver.get("http://192.168.2.9:9089/BrowserWeb/servlet/BrowserServlet");
 			driver.manage().window().maximize();
-			Thread.sleep(1000);
+			gm.implicitwait();
 		 driver.findElement(By.xpath("//input[@id='signOnName']")).sendKeys("FTPUSER04");
-		 Thread.sleep(1000);
+		 gm.implicitwait();
 		 driver.findElement(By.xpath("//input[@id='password']")).sendKeys("Test@123");	  
-		 Thread.sleep(3000);
+		 gm.implicitwait();
 		 WebElement submit = driver.findElement(By.xpath("//input[@id='sign-in']")); 
 		 submit.click();
 		 
@@ -57,17 +57,17 @@ public class CIFverification extends Basepage {
 		}
 		
 		driver.manage().window().maximize();
-		Thread.sleep(5000);
+		gm.implicitwait();
 		driver.findElement(By.xpath("//a[@title='Selection Screen']")).click();
-		Thread.sleep(5000);
+		gm.implicitwait();
 		driver.findElement(By.xpath("//table[starts-with(@id,'selectiondisplay')]/tbody/tr[3]/td[3]/input[starts-with(@id,'value')]")).sendKeys(reference);
 		driver.findElement(By.xpath("//a[@alt='Run Selection']")).click();
-		Thread.sleep(3000);
+		gm.implicitwait();
 		driver.findElement(By.xpath("//a[@title='Authorise']")).click();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//a[@title='Authorises a deal']")).click();
 		driver.close();
-		Thread.sleep(3000);
+		gm.implicitwait();
 		driver.switchTo().window(originalWindow);
 		WebElement firstframe=driver.findElement(By.xpath("//frame[contains(@id,'banner')]"));
 		driver.switchTo().frame(firstframe);

@@ -15,6 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
 
 import Test.Baseclass;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -42,11 +43,11 @@ public class IndividualCIF extends Basepage {
 		driver=new ChromeDriver();
 		driver.get("http://192.168.2.9:9089/BrowserWeb/servlet/BrowserServlet");
 		driver.manage().window().maximize();
-		Thread.sleep(1000);
+		gm.implicitwait();
 		driver.findElement(By.xpath("//input[@id='signOnName']")).sendKeys("ROOUSER01");
-		 Thread.sleep(1000);
+		gm.implicitwait();
 		 driver.findElement(By.xpath("//input[@id='password']")).sendKeys("Test@123");	  
-		 Thread.sleep(3000);
+		 gm.implicitwait();
 		 WebElement submit = driver.findElement(By.xpath("//input[@id='sign-in']")); 
 		 submit.click();
 		 
@@ -101,7 +102,7 @@ public class IndividualCIF extends Basepage {
         }
 		
 		driver.close();
-		Thread.sleep(3000);
+		gm.implicitwait();
 		driver.switchTo().window(originalWindow);
 		WebElement firstframe=driver.findElement(By.xpath("//frame[contains(@id,'banner')]"));
 		driver.switchTo().frame(firstframe);

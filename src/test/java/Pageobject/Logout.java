@@ -19,7 +19,10 @@ public class Logout extends Basepage{
 		Set<String> windows = driver.getWindowHandles();
 		List<String> windowHandlesList = new ArrayList<>(windows);
 		    // Switch to the window
-		    driver.switchTo().window(windowHandlesList.get(1));
+		    int size=windowHandlesList.size();
+		    if(size>0)
+		    	for(int i=size-1;i>0;i--)
+		    driver.switchTo().window(windowHandlesList.get(size-1));
 		    driver.close();
 
 		    // Perform necessary actions, e.g., close the window or find an element
@@ -28,7 +31,7 @@ public class Logout extends Basepage{
 		    	WebElement topframe = driver.findElement(By.xpath("//frame[contains(@id,'banner')]"));
 		    	driver.switchTo().frame(topframe);
 		        driver.findElement(By.xpath("//a[@title='Sign off']")).click();
-		       // driver.close();
+		        driver.close();
 		    } catch (NoSuchElementException e) {
 		        // Handle exception if the element is not found in the window
 		        System.out.println("Sign off element not found in window: ");

@@ -9,13 +9,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import Test.Baseclass;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Loginpage extends Basepage {
 	
 	 WebDriver driver;
 	
-	 public void loginPage() throws InterruptedException {
-		
+	 public void loginPage(WebDriver driver) throws InterruptedException {
+		 
+		 WebDriverManager.chromedriver().setup();
+			driver=new ChromeDriver();
+			driver.get("http://192.168.2.9:9089/BrowserWeb/servlet/BrowserServlet");
+			driver.manage().window().maximize();
 		 driver.findElement(By.xpath("//input[@id='signOnName']")).sendKeys("ROOUSER01");
 		 Thread.sleep(1000);
 		 driver.findElement(By.xpath("//input[@id='password']")).sendKeys("Test@123");	  

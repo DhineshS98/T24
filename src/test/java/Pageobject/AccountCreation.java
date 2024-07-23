@@ -19,6 +19,7 @@ public class AccountCreation extends Basepage {
 	}
 	GenericMethod gm=new GenericMethod();
 	Logout lg=new Logout();
+	Loginpage lp=new Loginpage(driver);
 	public static String Arrangment = null;
 	AccountVerification AV=new AccountVerification();
 	
@@ -32,12 +33,7 @@ public class AccountCreation extends Basepage {
 		driver.get("http://192.168.2.9:9089/BrowserWeb/servlet/BrowserServlet");
 		driver.manage().window().maximize();
 		Thread.sleep(1000);
-		driver.findElement(By.xpath("//input[@id='signOnName']")).sendKeys("ROOUSER01");
-		Thread.sleep(1000);
-		driver.findElement(By.xpath("//input[@id='password']")).sendKeys("Test@123");
-		Thread.sleep(3000);
-		WebElement submit = driver.findElement(By.xpath("//input[@id='sign-in']"));
-		submit.click();
+		lp.loginPage(driver);
 		
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));

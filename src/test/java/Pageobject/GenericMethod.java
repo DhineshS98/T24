@@ -2,14 +2,17 @@ package Pageobject;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class GenericMethod {
+public class GenericMethod extends Basepage {
 	
+	WebDriver driver;
 	FileInputStream fis;
 	Properties p;
 	
@@ -34,6 +37,11 @@ public class GenericMethod {
 		
 		
 	}
+	
+	public void implicitwait()
+	{
+	   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	 }
 	
 
 
